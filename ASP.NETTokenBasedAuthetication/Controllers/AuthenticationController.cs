@@ -54,5 +54,19 @@ namespace ASP.NETTokenBasedAuthetication.Controllers
             if (result.Succeeded) return Ok("User is Created succesfully");
             return BadRequest("User has not been Created");
         }
+
+        [HttpPost("login-user")]
+        public async Task<IActionResult> Login([FromBody] LoginVm loginVm)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Please provide all the request");
+
+            var userExists = await _userManager.FindByEmailAsync(loginVm.Email);
+            if (userExists != null && await _userManager.CheckPasswordAsync(userExists, loginVm.Password))
+            {
+                return Ok("User Signed-IN Succesfully ");
+            }
+            return Unauthorized();
+        }
     }
 }
