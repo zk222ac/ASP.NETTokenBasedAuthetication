@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.NETTokenBasedAuthetication", "ASP.NETTokenBasedAuthetication\ASP.NETTokenBasedAuthetication.csproj", "{990D8812-B1CD-4F32-88E0-4BDD754A55E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{990D8812-B1CD-4F32-88E0-4BDD754A55E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990D8812-B1CD-4F32-88E0-4BDD754A55E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990D8812-B1CD-4F32-88E0-4BDD754A55E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990D8812-B1CD-4F32-88E0-4BDD754A55E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D44AF7C-B2B1-40C6-A347-B977946F0269}
+	EndGlobalSection
+EndGlobal
