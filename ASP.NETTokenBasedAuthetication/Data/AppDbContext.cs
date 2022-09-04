@@ -10,5 +10,6 @@ namespace ASP.NETTokenBasedAuthetication.Data
         {
 
         }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }

@@ -14,6 +14,25 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(connectionString: connString);
 });
+
+// Set Token Validation Parameter
+
+var tokenValidationParameters = new TokenValidationParameters()
+{
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JWT:Secret"])),
+
+    ValidateIssuer = true,
+    ValidIssuer = builder.Configuration["JWT:Issuer"],
+
+    ValidateAudience = true,
+    ValidAudience = builder.Configuration["JWT:Audience"],
+
+    ValidateLifetime = true,
+    ClockSkew = TimeSpan.Zero
+};
+// Inject Token validation Parameter
+builder.Services.AddSingleton(tokenValidationParameters);
 // Add Identity ....................................................
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
@@ -30,14 +49,7 @@ builder.Services.AddAuthentication(options =>
     .AddJwtBearer(options => { 
       options.SaveToken = true;
         options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters() 
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration["JWT:Secret"])),
-            ValidateAudience = true,
-            ValidAudience = builder.Configuration["JWT:Audience"] 
-        };
-
+        options.TokenValidationParameters = tokenValidationParameters;
     });
 
 // Add services to the container.
